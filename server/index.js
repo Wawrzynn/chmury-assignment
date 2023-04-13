@@ -10,7 +10,7 @@ const path = require('path');
 app.use(express.json())
 app.use(cors())
 
-const URI = 'mongodb://localhost:27017/chmury_db'
+const URI = 'mongodb://mongodb:27017/chmury_db'
 
 // Connect to MongoDB
 mongoose
