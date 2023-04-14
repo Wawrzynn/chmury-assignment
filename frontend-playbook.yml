@@ -31,14 +31,14 @@
         state: present
 
     - name: Clone repository
-      command: git clone https://github.com/HiImWhite/top-movies.git
+      command: git clone https://github.com/Wawrzynn/Chmury-assignment.git
       args:
         chdir: /vagrant
 
     - name: Install frontend dependencies
       command: npm install --no-bin-links
       args:
-        chdir: /vagrant/top-movies/frontend
+        chdir: /vagrant/chmury/client
 
     - name: Run React App
-      shell: cd /vagrant/top-movies/frontend && nohup npm run dev >/dev/null 2>&1 &
+      shell: cd /vagrant/top-movies/frontend && nohup npm run start >/dev/null 2>&1 &

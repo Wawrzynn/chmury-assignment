@@ -26,14 +26,14 @@
         state: present
 
     - name: Clone repository
-      command: git clone https://github.com/HiImWhite/top-movies.git
+      command: git clone https://github.com/Wawrzynn/Chmury-assignment.git
       args:
         chdir: /vagrant
 
     - name: Install backend dependencies
       command: npm install --no-bin-links
       args:
-        chdir: /vagrant/top-movies/backend
+        chdir: /vagrant/chmury/server
 
     - name: Run Node server
-      shell: cd /vagrant/top-movies/backend && nohup node index.js >/dev/null 2>&1 &
+      shell: cd /vagrant/chmury/server && nohup node index.js >/dev/null 2>&1 &
