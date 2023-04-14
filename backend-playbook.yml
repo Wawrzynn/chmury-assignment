@@ -33,7 +33,7 @@
     - name: Install backend dependencies
       command: npm install --no-bin-links
       args:
-        chdir: /vagrant/chmury/server
+        chdir: /vagrant/Chmury-assignment/server
 
     - name: Run Node server
-      shell: cd /vagrant/chmury/server && nohup node index.js >/dev/null 2>&1 &
+      shell: cd /vagrant/Chmury-assignment/server && nohup node index.js >/dev/null 2>&1 &

@@ -38,7 +38,7 @@
     - name: Install frontend dependencies
       command: npm install --no-bin-links
       args:
-        chdir: /vagrant/chmury/client
+        chdir: /vagrant/Chmury-assignment/client
 
     - name: Run React App
-      shell: cd /vagrant/top-movies/frontend && nohup npm run start >/dev/null 2>&1 &
+      shell: cd /vagrant/Chmury-assignment/client && nohup npm run start >/dev/null 2>&1 &
