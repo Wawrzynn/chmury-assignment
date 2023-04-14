@@ -6,11 +6,17 @@ const FilmModel = require('./models/film')
 const fs = require('fs');
 const csv = require('fast-csv');
 const path = require('path');
+const dotenv = require('dotenv');
 
 app.use(express.json())
 app.use(cors())
+dotenv.config();
 
-const URI = 'mongodb://localhost:27017/chmury_db'
+const USERNAME = process.env.DB_USERNAME;
+const PASSWORD = process.env.DB_PASSWORD;
+
+// const URI = 'mongodb://localhost:27017/chmury_db'
+const URI = `mongodb+srv://${USERNAME}:${PASSWORD}@chmury.nld1lwn.mongodb.net/?retryWrites=true&w=majority`
 
 // Connect to MongoDB
 mongoose
@@ -21,26 +27,7 @@ mongoose
   .then(() => {
     console.log('CONNECTED TO DATABASE');
   })
-  .then(async () => {
-    const allRecords = [];
-
-    const data = await FilmModel.find({});
-
-    console.log(`Number of documents in DataBase: ${data.length}`);
-    if (data.length === 0)
-      fs.createReadStream(path.join(__dirname, './', 'data.csv')).pipe(
-        csv
-          .parse({ headers: true })
-          .on('error', (err) => console.log(err))
-          .on('data', (row) => allRecords.push(row))
-          .on('end', async (rowCount) => {
-            console.log(`${rowCount} rows has parsed`),
-              await FilmModel.insertMany(allRecords);
-          }),
-      );
-  })
   .catch((e) => console.error(e));
-
 
 // Get all films
 app.get('/films', async (req, res) => {
