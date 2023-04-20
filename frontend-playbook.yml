@@ -31,14 +31,14 @@
         state: present
 
     - name: Clone repository
-      command: git clone https://github.com/Wawrzynn/Chmury-assignment.git
+      command: git clone https://github.com/Wawrzynn/Vagrant-mern.git
       args:
-        chdir: /vagrant
+        chdir: /home/vagrant
 
     - name: Install frontend dependencies
-      command: npm install --no-bin-links
+      command: sudo npm install --no-bin-links
       args:
-        chdir: /vagrant/Chmury-assignment/client
+        chdir: /home/vagrant/Vagrant-mern/client
 
     - name: Run React App
-      shell: cd /vagrant/Chmury-assignment/client && nohup npm run start >/dev/null 2>&1 &
+      shell: cd /home/vagrant/Vagrant-mern/client && nohup sudo npm run start >/dev/null 2>&1 &
